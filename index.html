@@ -22,9 +22,19 @@
       .timer {
         font-size: 60px;
         color: white;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
       }
     </style>
+
+    <script>
+      function startTimer() {
+        let startTime = new Date().getTime(); // aktueller Zeitpunkt in Millisekunden
+        let fiveMinutes = 1000 * 60 * 5; // Berechnung 5 Min in Millisekunden
+        let endTime = startTime + fiveMinutes; // 5 Min auf aktuellen Zeitpunkt rechnen
+
+
+        
+      }
+    </script>
   </head>
   <body class="background-dark">
     <div>
@@ -33,13 +43,12 @@
 
     <div class="margin-top center">
       <img src="img/egg.png" width="200px" />
-    
     </div>
 
     <div class="margin-top timer center">05 : 00</div>
 
     <div class="margin-top center">
-      <img src="img/btn.png"  width="100"/>
+      <img src="img/btn.png" width="100" />
     </div>
   </body>
 </html>
