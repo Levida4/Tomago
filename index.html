@@ -31,7 +31,16 @@
         let fiveMinutes = 1000 * 60 * 5; // Berechnung 5 Min in Millisekunden
         let endTime = startTime + fiveMinutes; // 5 Min auf aktuellen Zeitpunkt rechnen
 
+        setInterval(function() {
+          let timeLeft = endTime - new Date().getTime();
+          let minutes = timeLeft / (1000*60);
+          minutes = Math.floor(minutes);
+          let seconds = (timeLeft / 1000) % 60;
+          seconds = Meth.round(seconds);
+          let text = '0' + minutes + " : " + seconds;
+          timer.innerHTML = text;
 
+        }, 1000);
         
       }
     </script>
