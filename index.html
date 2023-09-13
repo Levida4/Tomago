@@ -28,20 +28,23 @@
     <script>
       function startTimer() {
         let startTime = new Date().getTime(); // aktueller Zeitpunkt in Millisekunden
-        let fiveMinutes = 1000 * 60 * 5; // Berechnung 5 Min in Millisekunden
+        let fiveMinutes = 1000 * 5; // Berechnung 5 Min in Millisekunden, wird anschließend in "endTime" gespeichert
         let endTime = startTime + fiveMinutes; // 5 Min auf aktuellen Zeitpunkt rechnen
 
-        setInterval(function() {
-          let timeLeft = endTime - new Date().getTime();
-          let minutes = timeLeft / (1000*60);
-          minutes = Math.floor(minutes);
-          let seconds = (timeLeft / 1000) % 60;
-          seconds = Meth.round(seconds);
-          let text = '0' + minutes + " : " + seconds;
-          timer.innerHTML = text;
+        setInterval(function () {
+          let timeLeft = endTime - new Date().getTime(); // für jede Sekunde wird "TimeLeft" erstellt -> nur 1Sek gültig
 
+          if (timeLeft > 0) {
+            let minutes = timeLeft / (1000 * 60);
+            minutes = Math.floor(minutes); //Aufrunden
+            let seconds = (timeLeft / 1000) % 60;
+            seconds = Math.round(seconds);
+            let text = "0" + minutes + " : " + seconds; // Aussehen vom angezeigten text
+            timer.innerHTML = text; //in html Teil einbinden
+          } else {
+            timer.innerHTML = '00 : 00';
+          }
         }, 1000);
-        
       }
     </script>
   </head>
@@ -54,10 +57,10 @@
       <img src="img/egg.png" width="200px" />
     </div>
 
-    <div class="margin-top timer center">05 : 00</div>
+    <div class="margin-top timer center" id="timer">05 : 00</div>
 
     <div class="margin-top center">
-      <img src="img/btn.png" width="100" />
+      <img onclick="startTimer()" src="img/btn.png" width="100" />
     </div>
   </body>
 </html>
