@@ -20,15 +20,17 @@
       }
 
       .timer {
-        font-size: 60px;
+        font-size: 80px;
         color: white;
       }
     </style>
 
     <script>
-      let alarm = new Audio('yoshi.mp3');
+      let alarm = new Audio('YoshiIsland.mp3');
+      let timerStarted = false;
 
       function startTimer() {
+        if(!timerStarted) {
         let startTime = new Date().getTime(); // aktueller Zeitpunkt in Millisekunden
         let fiveMinutes = 1000 * 5; // Berechnung 5 Min in Millisekunden, wird anschließend in "endTime" gespeichert
         let endTime = startTime + fiveMinutes; // 5 Min auf aktuellen Zeitpunkt rechnen
@@ -41,13 +43,17 @@
             minutes = Math.floor(minutes); //Aufrunden
             let seconds = (timeLeft / 1000) % 60;
             seconds = Math.round(seconds);
+            seconds = ('0' + seconds).slice(-2);
             let text = "0" + minutes + " : " + seconds; // Aussehen vom angezeigten text
             timer.innerHTML = text; //in html Teil einbinden
           } else {
             alarm.play();
             timer.innerHTML = '00 : 00';
+            
           }
-        }, 1000);
+         }, 1000);
+        timerStarted = true;
+        }
       }
     </script>
   </head>
@@ -63,7 +69,7 @@
     <div class="margin-top timer center" id="timer">05 : 00</div>
 
     <div class="margin-top center">
-      <img onclick="startTimer()" src="img/starticongreen.png" width="100" />
+      <img onclick="startTimer()" src="img/playbtngreen.png" width="100" />
     </div>
   </body>
 </html>
