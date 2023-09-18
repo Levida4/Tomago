@@ -7,7 +7,7 @@
 
     <style>
       .background-dark {
-        background-color: #4f4f4f;
+        background-color: #93938b;
       }
 
       .center {
@@ -26,6 +26,8 @@
     </style>
 
     <script>
+      let alarm = new Audio('yoshi.mp3');
+
       function startTimer() {
         let startTime = new Date().getTime(); // aktueller Zeitpunkt in Millisekunden
         let fiveMinutes = 1000 * 5; // Berechnung 5 Min in Millisekunden, wird anschließend in "endTime" gespeichert
@@ -42,6 +44,7 @@
             let text = "0" + minutes + " : " + seconds; // Aussehen vom angezeigten text
             timer.innerHTML = text; //in html Teil einbinden
           } else {
+            alarm.play();
             timer.innerHTML = '00 : 00';
           }
         }, 1000);
@@ -50,17 +53,17 @@
   </head>
   <body class="background-dark">
     <div>
-      <img src="img/menu.png" width="50px" />
+      <img src="img/listicongreen.png" width="50px" />
     </div>
 
     <div class="margin-top center">
-      <img src="img/egg.png" width="200px" />
+      <img src="img/yoshiegg.png" width="200px" />
     </div>
 
     <div class="margin-top timer center" id="timer">05 : 00</div>
 
     <div class="margin-top center">
-      <img onclick="startTimer()" src="img/btn.png" width="100" />
+      <img onclick="startTimer()" src="img/starticongreen.png" width="100" />
     </div>
   </body>
 </html>
