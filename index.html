@@ -29,9 +29,9 @@
       let alarm = new Audio('YoshiIsland.mp3');
       let timerStarted = false;
 
-        // Die Minuten- und Sekunden-Zahlen in Variablen speichern
-        let minutes = 5;
-        let seconds = 0;
+      // Die Minuten- und Sekunden-Zahlen in Variablen speichern
+      let minutes = 5;
+      let seconds = 0;
 
       function updateTimerText () {
         const timerElement = document.getElementById('timer');
@@ -45,22 +45,29 @@
       }
 
       function startTimer() {
-        // Timer aktualisieren alle 1000 Millisekunden (1 Sekunde)
-        const timerInterval = setInterval(function () {
-            updateTimerText();       
-          // Reduziere die Sekunden um 1
-          if (seconds > 0) {
-              seconds--;
-          } else if (minutes > 0) {
-              minutes--;
-              seconds = 59;
-          } else {
-            alarm.play();    
-            const bildElement = document.getElementById('meinBild');
-            bildElement.src = "img/starticongreen.png";
-            clearInterval(timerInterval);
-          }
-        }, 1000);
+        if(timerStarted == false) {
+          timerStarted = true;
+          // Timer aktualisieren alle 1000 Millisekunden (1 Sekunde)
+          const timerInterval = setInterval(function () {
+              updateTimerText();       
+            // Reduziere die Sekunden um 1
+            if (seconds > 0) {
+                seconds--;
+            } else if (minutes > 0) {
+                minutes--;
+                seconds = 59;
+            } else {
+              alarm.play();    
+              const bildElement = document.getElementById('meinBild');
+              bildElement.src = "img/starticongreen.png";
+              clearInterval(timerInterval);
+              timerStarted = false;
+            }
+          }, 1000);
+  
+
+        }
+
       }
 
       function reduceMinute() {
