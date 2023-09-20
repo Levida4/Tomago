@@ -26,8 +26,10 @@
     </style>
 
     <script>
+      
       let alarm = new Audio('YoshiIsland.mp3');
       let timerStarted = false;
+
 
       function startTimer() {
         if(!timerStarted) {
@@ -35,7 +37,8 @@
         let fiveMinutes = 1000 * 5; // Berechnung 5 Min in Millisekunden, wird anschließend in "endTime" gespeichert
         let endTime = startTime + fiveMinutes; // 5 Min auf aktuellen Zeitpunkt rechnen
 
-        setInterval(function () {
+        const bildElement = document.getElementById('meinBild');
+        intervalId = setInterval(function () {
           let timeLeft = endTime - new Date().getTime(); // für jede Sekunde wird "TimeLeft" erstellt -> nur 1Sek gültig
 
           if (timeLeft > 0) {
@@ -47,9 +50,10 @@
             let text = "0" + minutes + " : " + seconds; // Aussehen vom angezeigten text
             timer.innerHTML = text; //in html Teil einbinden
           } else {
-            alarm.play();
+            alarm.play();    
             timer.innerHTML = '00 : 00';
-            
+            clearInterval(intervalId);
+            bildElement.src = "img/starticongreen.png";            
           }
          }, 1000);
         timerStarted = true;
@@ -63,7 +67,7 @@
     </div>
 
     <div class="margin-top center">
-      <img src="img/yoshiegg.png" width="200px" />
+      <img id="meinBild" src="img/yoshiegg.png" width="200px" />
     </div>
 
     <div class="margin-top timer center" id="timer">05 : 00</div>
