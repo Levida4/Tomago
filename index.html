@@ -6,8 +6,8 @@
     <title>Document</title>
 
     <style>
-      .background-dark {
-        background-color: #93938b;
+      .background {
+        background-color: #f6f697;
       }
 
       .center {
@@ -21,85 +21,87 @@
 
       .timer {
         font-size: 80px;
-        color: white;
+        color: rgb(113, 191, 44);
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      }
+
+      .icon {
+       position: absolute;
+       font-size: 24px;
+       cursor: pointer;
       }
     </style>
 
     <script>
-      let alarm = new Audio('YoshiIsland.mp3');
+      let alarm = new Audio("YoshiIsland.mp3");
       let timerStarted = false;
 
       // Die Minuten- und Sekunden-Zahlen in Variablen speichern
       let minutes = 5;
       let seconds = 0;
 
-      function updateTimerText () {
-        const timerElement = document.getElementById('timer');
+      function updateTimerText() {
+        const timerElement = document.getElementById("timer");
 
         // Füge führende Nullen hinzu, wenn Minuten oder Sekunden einstellig sind
-        const formattedMinutes = String(minutes).padStart(2, '0');
-        const formattedSeconds = String(seconds).padStart(2, '0');
+        const formattedMinutes = String(minutes).padStart(2, "0");
+        const formattedSeconds = String(seconds).padStart(2, "0");
 
         // Setze den Text des Timer-Elements
         timerElement.textContent = ` ${formattedMinutes}: ${formattedSeconds}`;
       }
 
       function startTimer() {
-        if(timerStarted == false) {
+        if (timerStarted == false) {
           timerStarted = true;
           // Timer aktualisieren alle 1000 Millisekunden (1 Sekunde)
           const timerInterval = setInterval(function () {
-              updateTimerText();       
+            updateTimerText();
             // Reduziere die Sekunden um 1
             if (seconds > 0) {
-                seconds--;
+              seconds--;
             } else if (minutes > 0) {
-                minutes--;
-                seconds = 59;
+              minutes--;
+              seconds = 59;
             } else {
-              alarm.play();    
-              const bildElement = document.getElementById('meinBild');
-              bildElement.src = "img/starticongreen.png";
+              alarm.play();
+              const bildElement = document.getElementById("meinBild");
+              bildElement.src = "img/yoshipic.png";
               clearInterval(timerInterval);
               timerStarted = false;
             }
           }, 1000);
-  
-
         }
-
       }
 
       function reduceMinute() {
         minutes--;
-        updateTimerText("verringern");  
-       
+        updateTimerText("verringern");
       }
 
       function increaseMinute() {
         minutes++;
-        updateTimerText("erhoehen");  
+        updateTimerText("erhoehen");
       }
-
-
     </script>
   </head>
-  <body class="background-dark">
-    <div>
-      <img onclick="reduceMinute()" src="img/listicongreen.png" width="50px" />
-    </div>
-    <div>
-      <img onclick="increaseMinute()" src="img/listicongreenup.png" width="50px" />
-    </div>
-
+  <body class="background">
+   
     <div class="margin-top center">
-      <img id="meinBild" src="img/yoshiegg.png" width="200px" />
+      <img id="meinBild" src="img/yoshiegg.png" width="260px" />
     </div>
 
-    <div class="margin-top timer center" id="timer">05 : 00</div>
+    <div class="margin-top timer center" id="timer">05 : 00
+      
+    </div>
 
-    <div class="margin-top center">
-      <img onclick="startTimer()" src="img/playbtngreen.png" width="100" />
+    <div   class="margin-top center">
+      <img
+        onclick="increaseMinute()" src="img/listicongreenup.png" height="80px" />
+      <img onclick="reduceMinute()" src="img/listicongreen.png" height="80px" />
+    </div>
+    <div class="center">
+      <img onclick="startTimer()" src="img/playbtngreen.png" width="120" />
     </div>
   </body>
 </html>
