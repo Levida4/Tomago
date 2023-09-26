@@ -83,6 +83,11 @@
         minutes++;
         updateTimerText("erhoehen");
       }
+
+       // Event Listener für den Button, um die Seite neu zu laden
+       document.getElementById("reloadButton").addEventListener("click", function() {
+            location.reload();
+        });
     </script>
   </head>
   <body class="background">
@@ -101,7 +106,10 @@
       <img onclick="reduceMinute()" src="img/listicongreen.png" height="80px" />
     </div>
     <div class="center">
-      <img onclick="startTimer()" src="img/playbtngreen.png" width="120" />
+      <img onclick="startTimer()" src="img/playbtngreen.png" width="140" />
+    </div>
+    <div class="center">
+      <img onclick="window.location.reload()" src="img/Hopstarter-Button-Button-Reload.256.png" height="70" />
     </div>
   </body>
 </html>
