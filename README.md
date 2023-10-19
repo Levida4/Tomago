@@ -10,7 +10,8 @@ Ich habe mittels IDE (Visual Studio Code) HTML CSS und JavaScript für mein klei
 Für das Design habe ich mich für einen selbstkreierten "Comic Stil" entschieden.
 Symbole und Design sind simpel und für Jedermann verständlich gehalten
 
-![Tomago](https://github.com/Levida4/Tomago/assets/130986481/9ab4ce80-5a52-4fba-ac48-1aa60768bb0b)
+
+![Tomago](https://github.com/Levida4/Tomago/assets/130986481/04d76a82-6bc1-4b79-aa25-7fc88783ed7c)
 
 # Buttons
 Der Timer besteht derzeit aus vier Buttons. 
